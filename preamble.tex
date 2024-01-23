@@ -1,0 +1,88 @@
+%\usepackage{pifont} %For unusual symbols
+%\usepackage{mathdots} %For unusual combinations of dots
+
+\usepackage{wrapfig}
+\usepackage{lmodern,mathrsfs}
+\usepackage[inline,shortlabels]{enumitem}
+\setlist{topsep=2pt,itemsep=2pt,parsep=0pt,partopsep=0pt}
+\usepackage[dvipsnames]{xcolor}
+% \usepackage[utf8]{inputenc}
+\usepackage[a4paper, top=0.5in,bottom=0.2in, left=0.5in, right=0.5in, footskip=0.3in, includefoot]{geometry}
+\usepackage[most]{tcolorbox}
+\usepackage{tikz,tikz-3dplot,tikz-cd,tkz-tab,tkz-euclide,pgf,pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{multicol}
+\usepackage[bottom,multiple]{footmisc} %ensures footnotes are at the bottom of the page, and separates footnotes by a comma if they are adjacent
+\usepackage[backend=bibtex,style=numeric]{biblatex}
+\renewcommand*{\finalnamedelim}{\addcomma\addspace} %forces authors' names to be separated by comma, instead of "and"
+\addbibresource{bibliography}
+\usepackage{hyperref}
+\usepackage[nameinlink]{cleveref} %nameinlink ensures that the entire element is clickable in the pdf, not just the number
+
+\newcommand{\remind}[1]{\textcolor{red}{\textbf{#1}}} %To remind me of unfinished work to fix later
+
+{
+\newtheoremstyle{mystyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{}
+\newtheoremstyle{cstyle}{}{}{}{}{\sffamily\bfseries}{.}{ }{\thmnote{#3}}
+\makeatletter
+\renewenvironment{proof}[1][\proofname] {\par\pushQED{\qed}{\normalfont\sffamily\bfseries\topsep6\p@\@plus6\p@\relax #1\@addpunct{.} }}{\popQED\endtrivlist\@endpefalse}
+\makeatother
+% \newcommand{\coolqed}[1]{\includegraphics[width=#1cm]{sunglasses_emoji.png}} %Defines the new QED symbol
+\renewcommand{\qedsymbol}{this finishes the proof} %Implements the new QED symbol
+\theoremstyle{mystyle}{\newtheorem{definition}{Definition}[section]}
+\theoremstyle{mystyle}{\newtheorem{claim}[definition]{Claim}}
+\theoremstyle{mystyle}{\newtheorem{proposition}[definition]{Proposition}}
+\theoremstyle{mystyle}{\newtheorem{theorem}[definition]{Theorem}}
+\theoremstyle{mystyle}{\newtheorem{lemma}[definition]{Lemma}}
+\theoremstyle{mystyle}{\newtheorem{corollary}[definition]{Corollary}}
+\theoremstyle{mystyle}{\newtheorem*{remark}{Remark}}
+\theoremstyle{mystyle}{\newtheorem*{remarks}{Remarks}}
+\theoremstyle{mystyle}{\newtheorem*{example}{Example}}
+\theoremstyle{mystyle}{\newtheorem*{examples}{Examples}}
+\theoremstyle{definition}{\newtheorem*{exercise}{Exercise}}
+\theoremstyle{cstyle}{\newtheorem*{cthm}{}}
+}
+{
+%Warning environment
+\newtheoremstyle{warn}{}{}{}{}{\normalfont}{}{ }{}
+\theoremstyle{warn}
+\newtheorem*{warning}{\warningsign{0.2}\relax}
+
+%Symbol for the warning environment, designed to be easily scalable
+\newcommand{\warningsign}[1]{\tikz[scale=#1,every node/.style={transform shape}]{\draw[-,line width={#1*0.8mm},red,fill=yellow,rounded corners={#1*2.5mm}] (0,0)--(1,{-sqrt(3)})--(-1,{-sqrt(3)})--cycle;
+\node at (0,-1) {\fontsize{48}{60}\selectfont\bfseries!};}}
+
+\tcolorboxenvironment{definition}{boxrule=0pt,boxsep=0pt,colback={red!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{red},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proposition}{boxrule=0pt,boxsep=0pt,colback={Orange!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Orange},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{theorem}{boxrule=0pt,boxsep=0pt,colback={blue!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{blue},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{lemma}{boxrule=0pt,boxsep=0pt,colback={Cyan!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{Cyan},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{corollary}{boxrule=0pt,boxsep=0pt,colback={violet!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{violet},sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{proof}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{CadetBlue!80!white},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remark}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{remarks}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Green},left=8pt,right=8pt,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{example}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{examples}{boxrule=0pt,boxsep=0pt,blanker,borderline west={2pt}{0pt}{Black},left=8pt,right=8pt,sharp corners,before skip=10pt,after skip=10pt,breakable}
+\tcolorboxenvironment{cthm}{boxrule=0pt,boxsep=0pt,colback={gray!10},left=8pt,right=8pt,enhanced jigsaw, borderline west={2pt}{0pt}{gray},sharp corners,before skip=10pt,after skip=10pt,breakable}
+}
+
+%align and align* environments with inline size
+\newenvironment{talign}{\let\displaystyle\textstyle\align}{\endalign}
+\newenvironment{talign*}{\let\displaystyle\textstyle\csname align*\endcsname}{\endalign}
+
+\usepackage[explicit]{titlesec}
+\titleformat{\section}{\fontsize{24}{30}\sffamily\bfseries}{\thesection}{20pt}{#1}
+\titleformat{\subsection}{\fontsize{16}{18}\sffamily\bfseries}{\thesubsection}{12pt}{#1}
+\titleformat{\subsubsection}{\fontsize{10}{12}\sffamily\large\bfseries}{\thesubsubsection}{8pt}{#1}
+
+\titlespacing*{\section}{0pt}{5pt}{5pt}
+\titlespacing*{\subsection}{0pt}{5pt}{5pt}
+\titlespacing*{\subsubsection}{0pt}{5pt}{5pt}
+
+%\newcommand{\sectionbreak}{\clearpage} %Start every section on a new page
+
+\newcommand{\Disp}{\displaystyle}
+\newcommand{\qe}{\hfill\(\bigtriangledown\)}
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+\setlength{\parindent}{0.2in}
+\setlength{\parskip}{0pt}
+\setlength{\columnseprule}{0pt}

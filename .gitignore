@@ -1,0 +1,7 @@
+**.bak
+*~
+/auto/
+/build/
+*.aux
+*.log
+*.out

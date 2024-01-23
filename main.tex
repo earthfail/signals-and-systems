@@ -1,0 +1,51 @@
+\documentclass[10pt]{extarticle}
+% \usepackage[english]{babel}
+% \input{langs} % language support
+% \usepackage[utf8]{inputenc}
+\usepackage{csquotes} % to remove warning
+\usepackage{graphicx}
+\usepackage{framed}
+\usepackage[normalem]{ulem}
+\usepackage{indentfirst}
+\usepackage{amsmath,amsthm,amssymb,amsfonts}
+\usepackage[italicdiff]{physics}
+\usepackage[T1]{fontenc}
+% link https://www.overleaf.com/project/61ade6ccb563183732e7653d
+% fun template preamble
+% \input{preamble}
+
+%=====================================================
+% extra packages from math
+\usepackage[super]{nth}
+\usepackage{mathtools} % to use := and =:
+\usepackage{bbold} % to use bold 1,0
+
+\input{definitions} % math definitions
+%=====================================================
+
+\title{\huge\sffamily\bfseries hw2 dry}
+\author{\Large\sffamily Salim Khatib}
+\date{\sffamily \today}
+\setlength{\abovedisplayskip}{3pt}
+\setlength{\belowdisplayskip}{3pt}
+\setlength{\abovedisplayshortskip}{0pt}
+\setlength{\belowdisplayshortskip}{0pt}
+
+%Custom colors for different environments
+% \definecolor{contcol1}{HTML}{72E094}
+% \definecolor{contcol2}{HTML}{24E2D6}
+% \definecolor{convcol1}{HTML}{C0392B}
+% \definecolor{convcol2}{HTML}{8E44AD}
+
+%=====================================================
+\begin{document}
+% start here
+\maketitle
+% \newcommand{\integ}[3][]{\int_{#1} #2 d#3}
+% \newcommand{\half}{\frac{1}{2}}
+\input{hw1}
+\end{document}
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

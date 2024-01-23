@@ -1,0 +1,54 @@
+\section{Q1}
+\subsection{Linear}
+for all $\alpha$ the system is linear
+\subsection{TI}
+for the system to be time invariant it has to be commutative with $\sigma^T$ for all real values of $T$. Let $x(t)$ be an input signal, then:
+\begin{equation}
+    \Psi{\sigma^T{x}}=\int_{-\infty}^{\alpha t}
+        \sigma^T{x}(\tau)d\tau
+        =\int_{-\infty}^{T+\alpha t}x(\tau)d\tau.
+\end{equation}
+on the other hand:
+\begin{equation}
+    \sigma^T{\Psi{x}(s)}(t)=\sigma^T{\int_{-\infty}^{\alpha t}x(\tau)d\tau}=\int_{-\infty}^{\alpha t + \alpha T}x(\tau)d\tau.
+\end{equation}
+taking the difference we get 
+$$\int_{T}^{\alpha T}x(\tau)d\tau = 0$$
+and since the equation holds for all signals then $T=\alpha T$ and thus $\alpha=1$. And it is easy to show that for $\alpha=1$ the system is TI (We even saw it in class).
+\subsection{Causal}
+We will first show that for $\alpha< 1$ the system is not causal. Let $\R\ni t_0<0$, $x_1(t)=u(t-t_0)$ and $x_2(t)=0$. Then $\Psi{x_2}\equiv 0$. If $\alpha\leq 0$ take $t<t_0$ and if $0<\alpha<1$ take $t_0/\alpha<t<t_0$. We get:
+\[
+    t_0 < \alpha t \wedge
+    \Psi{x_1}(t)=\int_{-\infty}^{\alpha t} x_2(\tau)d\tau = \int_{t_0}^{\alpha t} 1 d\tau = \alpha t-t_0 > 0
+\]
+\\
+and for $\alpha>1$ the system is also not causal. Let $t_0=1$, $1/\alpha<t<1$ and $x_1,x_2$ as before then $\Psi{x_1}(t)=\alpha t -1>0$.
+This leaves us with only $\alpha=1$ to check. We saw in class that it is causal.
+\subsection{Memoryless}
+there is no system in this family that is memoryless. Because if it is memoryless then it is causal, so we only need to check $\alpha=1$ and we saw that an integral operator is not memoryless. 
+\footnote{
+Proof: assume otherwise and take $x_1$ to be any signal in the input and $x_2$ to be $x_1$ plus a small perturbation between 0 and 1 e.g a window. Then for $t>1$ the output of $x_2$ is always more than the output of $x_1$. We found a set with non zero length that the outputs differ then the system is not memoryless
+}
+\subsection{Invertible}
+For $\alpha=0$ the system is not invertible: take $x\equiv 0$ and $y=u(t-1)$. The two signals are clearly not equal but their output is equal. For $\alpha\neq 0$, let $x(t),y(t)$ be the input and output of the system respectively. $y(t)=\int_{-\infty}^{\alpha t}x(\tau)d\tau$, differentiating both sides we get:
+\begin{align*}
+    y'(t)=x(\alpha t)\alpha,\quad s=\alpha t\\
+    y'(s/\alpha)=x(s)\alpha\\
+    \frac{y'(s/\alpha)}{\alpha}=x(s)
+\end{align*}
+Thus we have $\Phi\{y\}(t)=\frac{y'(t/\alpha)}{|\alpha|}$ is inverse to $\Psi$.
+
+\section{2}
+\subsection{1}
+for $x$ to be periodic it means $\sigma^{T_x}x=x$. We prove the $\sigma^{T_x}\Psi{x}=\Psi{x}$:
+\begin{equation}
+    \sigma^{T_x}\Psi\{x\}\overbrace{=}^\texttt{TI}
+    \Psi\{\sigma^{T_x}\{x\}\}=\Psi\{x\}
+\end{equation}
+\subsection{2}
+No. Take $\Psi\{x\}(t)=|x(t)|$. It is TI because:
+\begin{align*}
+    \Psi\{\sigma^T\{x\}\}(t)=|x(T+t)|\\
+    \sigma^T\{\Psi\{x\}\}(t)=|x(T+t)|.
+\end{align*}
+but take the signal $x(t)=\sin(2\pi t)$. Its period is $1$ but $\Psi\{x\}(t)$ has a period of $1/2$ because $\sin(t+\pi)=-\sin(t)$
